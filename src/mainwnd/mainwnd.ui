@@ -16,7 +16,7 @@
         </child> -->
 
         <child type="end">
-          <object class="GtkMenuButton" id="topmenu">
+          <object class="GtkMenuButton" id="app_menu_btn">
             <property name="direction">none</property>
           </object>
         </child>
