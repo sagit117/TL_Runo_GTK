@@ -8,6 +8,9 @@ all: $(TARGET)
 main.o: ./src/main.c
 	$(CC) $(CFLAGS) -c ./src/*.c
 
+# %.o: %.c
+# 	$(CC) $(CFLAGS) -c ./src/*.c
+
 $(TARGET): main.o
 	$(CC) -o ./bin/$(TARGET) *.o $(LIBS)
 
