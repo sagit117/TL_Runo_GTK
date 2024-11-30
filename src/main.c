@@ -1,21 +1,18 @@
-#include <gtk/gtk.h>
+// #include <gtk/gtk.h>
 #include <unistd.h> // getopt
 #include <ctype.h>
 
 #include "../../lib/logger/bin/logger.h"
+#include "headers/app.h"
 
 #define EXIT_SUCCESS 0
 #define EXIT_ERROR 1
 
 Logger logger;
 
-static void activate (GtkApplication *app, gpointer user_data);
+// static void activate (GtkApplication *app, gpointer user_data);
 
 int main (int argc, char **argv) {
-    // #ifdef GTK_SRCDIR
-    //     g_chdir (GTK_SRCDIR);
-    // #endif
-
     /* Активация логера */
     logger.max_size = 1024;
     logger.out = stdout;
@@ -55,44 +52,6 @@ int main (int argc, char **argv) {
 		} 
 	}
 
-    /* Запуск главного окна */
-    GtkApplication *app = gtk_application_new("ru.axel.tl", G_APPLICATION_DEFAULT_FLAGS);
-    g_signal_connect(app, "activate", G_CALLBACK(activate), NULL);
-    int status = g_application_run(G_APPLICATION(app), 1, argv); // Передаем только 1 аргумент (название приложение, что-бы не вылетала ошибка "Неизвестный параметр")
-    g_object_unref(app);
-
-    return status;
-}
-
-static void quit_activated (GSimpleAction *action, GVariant *parameter, gpointer app) {
-  g_application_quit (G_APPLICATION (app));
-}
-
-static GActionEntry app_entries[] = {
-//   { "preferences", preferences_activated, NULL, NULL, NULL },
-  { "quit", quit_activated, NULL, NULL, NULL }
-};
-
-/* Метод активации главного окна */
-static void activate(GtkApplication *app, gpointer user_data) {
-    GtkBuilder *builder = gtk_builder_new();
-    gtk_builder_add_from_file(builder, "./src/ui/mainwnd.ui", NULL);
-
-    GObject *window = gtk_builder_get_object(builder, "window");
-    gtk_window_set_application(GTK_WINDOW(window), app);
-    gtk_widget_set_visible(GTK_WIDGET(window), TRUE);
-    // gtk_window_maximize(GTK_WINDOW(window));
-
-    GMenuModel *menu;
-    GObject *button = gtk_builder_get_object(builder, "topmenu");
-
-    builder = gtk_builder_new_from_file("./src/ui/topmenu.ui");
-    
-    menu = G_MENU_MODEL(gtk_builder_get_object(builder, "menu"));
-    gtk_menu_button_set_menu_model(GTK_MENU_BUTTON(button), menu);
-    // gtk_menu_button_set_primary (GTK_MENU_BUTTON (button), TRUE);
-
-    g_action_map_add_action_entries(G_ACTION_MAP (app), app_entries, G_N_ELEMENTS (app_entries), app);
-
-    g_object_unref(builder);
+    /* Запуск приложения */
+    return launch_app(argc, argv);
 }

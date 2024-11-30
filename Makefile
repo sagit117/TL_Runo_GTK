@@ -5,13 +5,16 @@ LIBS = $(shell pkg-config --libs gtk4) -L../lib/logger/bin/ -llogger -Wl,-rpath,
 
 all: $(TARGET)
 
+mainwnd.o: ./src/mainwnd/mainwnd.c
+	$(CC) $(CFLAGS) -c ./src/mainwnd/*.c
+
+app.o: ./src/app/app.c
+	$(CC) $(CFLAGS) -c ./src/app/*.c
+
 main.o: ./src/main.c
 	$(CC) $(CFLAGS) -c ./src/*.c
 
-# %.o: %.c
-# 	$(CC) $(CFLAGS) -c ./src/*.c
-
-$(TARGET): main.o
+$(TARGET): main.o app.o mainwnd.o
 	$(CC) -o ./bin/$(TARGET) *.o $(LIBS)
 
 clean:
