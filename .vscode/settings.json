@@ -3,6 +3,7 @@
         "gtk.h": "c",
         "mainwnd.h": "c",
         "cstdlib": "c",
-        "app_menu.h": "c"
+        "app_menu.h": "c",
+        "logger.h": "c"
     }
 }

@@ -1,14 +1,21 @@
 #include "../headers/app_menu.h"
 
+/* Метод выхода из приложения */
 static void quit_activated(GSimpleAction *action, GVariant *parameter, gpointer app) {
   g_application_quit(G_APPLICATION(app));
 }
 
+/* Состав меню приложения */
 static GActionEntry app_entries[] = {
 //   { "preferences", preferences_activated, NULL, NULL, NULL },
     { "quit", quit_activated, NULL, NULL, NULL }
 };
 
+/**
+ * Привязка кнопки к меню приложения.
+ * @param button кнопка меню.
+ * @param app объект приложения.
+ */
 void set_app_menu_model(GtkMenuButton *button, GtkApplication *app) {
     GtkBuilder *builder = gtk_builder_new_from_file("./src/app_menu/app_menu.ui");
     GMenuModel *menu = G_MENU_MODEL(gtk_builder_get_object(builder, "app_menu"));

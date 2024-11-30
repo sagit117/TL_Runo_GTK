@@ -1,6 +1,5 @@
-// #include <gtk/gtk.h>
 #include <unistd.h> // getopt
-#include <ctype.h>
+#include <ctype.h>  // isprint
 
 #include "../../lib/logger/bin/logger.h"
 #include "headers/app.h"

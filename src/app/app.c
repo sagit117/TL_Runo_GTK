@@ -2,6 +2,7 @@
 
 #include "../headers/mainwnd.h"
 
+/* Запуск приложения */
 int launch_app(int argc, char **argv) {
     GtkApplication *app = gtk_application_new("ru.axel.tl", G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect(app, "activate", G_CALLBACK(activate_mainwnd), NULL);
