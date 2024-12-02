@@ -50,5 +50,6 @@ int main (int argc, char **argv) {
 	}
 
     /* Запуск приложения */
-    return launch_app(argc, argv);
+    // return launch_app(argc, argv);
+    return g_application_run(G_APPLICATION(runo_app_new()), argc, argv);
 }

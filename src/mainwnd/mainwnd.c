@@ -1,5 +1,29 @@
 #include "../headers/mainwnd.h"
 #include "../headers/app_menu.h"
+#include "../headers/app.h"
+
+struct _RunoAppWindow
+{
+    GtkApplicationWindow parent;
+    GtkWidget *stack;
+};
+
+G_DEFINE_TYPE(RunoAppWindow, runo_app_window, GTK_TYPE_APPLICATION_WINDOW)
+
+static void runo_app_window_init(RunoAppWindow *win) {
+    gtk_widget_init_template(GTK_WIDGET(win));
+}
+
+
+static void runo_app_window_class_init(RunoAppWindowClass *class) {
+    gtk_widget_class_set_template_from_resource(GTK_WIDGET_CLASS(class), "/ru/axel/tl/mainwnd.ui");
+    // gtk_widget_class_bind_template_child(GTK_WIDGET_CLASS(class), RunoAppWindow, stack);
+}
+
+RunoAppWindow *runo_app_window_new(RunoApp *app) {
+    return g_object_new(RUNO_APP_WINDOW_TYPE, "application", app, NULL);
+}
+
 
 /** 
  * Метод активации главного окна.
