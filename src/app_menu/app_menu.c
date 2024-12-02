@@ -1,13 +1,18 @@
 #include "../headers/app_menu.h"
 
 /* Метод выхода из приложения */
-static void quit_activated(GSimpleAction *action, GVariant *parameter, gpointer app) {
+static void quit_activated(GSimpleAction *_action, GVariant *_parameter, gpointer app) {
   g_application_quit(G_APPLICATION(app));
 }
 
-/* Состав меню приложения */
+/* Метод запуска окна настроек */
+static void preferences_activated(GSimpleAction *action, GVariant *parameter, gpointer app) {
+
+}
+
+/* Обработчики меню приложения */
 static GActionEntry app_entries[] = {
-//   { "preferences", preferences_activated, NULL, NULL, NULL },
+    { "preferences", preferences_activated, NULL, NULL, NULL },
     { "quit", quit_activated, NULL, NULL, NULL }
 };
 

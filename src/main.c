@@ -9,8 +9,6 @@
 
 Logger logger;
 
-// static void activate (GtkApplication *app, gpointer user_data);
-
 int main (int argc, char **argv) {
     /* Активация логера */
     logger.max_size = 1024;
