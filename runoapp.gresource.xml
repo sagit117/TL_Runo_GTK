@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/ru/axel/tl">
     <file preprocess="xml-stripblanks" alias="mainwnd.ui">./src/mainwnd/mainwnd.ui</file>
+    <file preprocess="xml-stripblanks" alias="app_menu.ui">./src/app_menu/app_menu.ui</file>
   </gresource>
 </gresources>

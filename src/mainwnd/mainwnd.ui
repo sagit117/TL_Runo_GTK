@@ -1,60 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <requires lib="gtk" version="4.0"/>
-  <object id="window" class="GtkWindow">
-    <property name="title" translatable="yes">RunoTL</property>
+  <template class="RunoAppWindow" parent="GtkApplicationWindow">
+    <property name="title" translatable="yes">Runo Task Lead</property>
     <property name="default-width">600</property>
     <property name="default-height">400</property>
 
     <child type="titlebar">
       <object class="GtkHeaderBar" id="header">
 
-        <!-- <child type="title">
-          <object class="GtkStackSwitcher" id="tabs">
-            <property name="stack">stack</property>
-          </object>
-        </child> -->
-
         <child type="end">
-          <object class="GtkMenuButton" id="app_menu_btn">
+          <object class="GtkMenuButton" id="gears">
             <property name="direction">none</property>
           </object>
         </child>
-
       </object>
     </child>
 
-    <!-- <child>
-      <object id="grid" class="GtkGrid">
+    <child>
+      <object class="GtkBox" id="content_box">
+        <property name="orientation">vertical</property>
         <child>
-          <object id="button1" class="GtkButton">
-            <property name="label">Button 1</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">0</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object id="button2" class="GtkButton">
-            <property name="label">Button 2</property>
-            <layout>
-              <property name="column">1</property>
-              <property name="row">0</property>
-            </layout>
-          </object>
-        </child>
-        <child>
-          <object id="quit" class="GtkButton">
-            <property name="label">Quit</property>
-            <layout>
-              <property name="column">0</property>
-              <property name="row">1</property>
-              <property name="column-span">2</property>
-            </layout>
-          </object>
+          <object class="GtkStack" id="stack"/>
         </child>
       </object>
-    </child> -->
-  </object>
+    </child>
+  </template>
 </interface>

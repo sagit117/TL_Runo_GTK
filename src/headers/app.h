@@ -6,7 +6,7 @@
 
 G_DECLARE_FINAL_TYPE (RunoApp, runo_app, RUNO, APP, GtkApplication);
 
-/* Запуск приложения */
-int launch_app(int argc, char **argv);
+// /* Запуск приложения */
+// int launch_app(int argc, char **argv);
 
 RunoApp *runo_app_new(void);
