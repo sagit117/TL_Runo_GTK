@@ -1,9 +1,5 @@
-// #include <gtk/gtk.h>
-
 #include "../headers/app.h"
 #include "../headers/mainwnd.h"
-
-#include <stdlib.h>
 
 struct _RunoApp {
     GtkApplication parent;
@@ -11,10 +7,12 @@ struct _RunoApp {
 
 G_DEFINE_TYPE(RunoApp, runo_app, GTK_TYPE_APPLICATION);
 
+/* Инициализация приложения (метод вызывается внутри gtk) */
 static void runo_app_init(RunoApp *app) {
 
 }
 
+/* Активация главного окна приложения */
 static void runo_app_activate(GApplication *app) {
     RunoAppWindow *win;
 
@@ -38,6 +36,7 @@ static GActionEntry app_entries[] = {
     { "quit", quit_activated, NULL, NULL, NULL }
 };
 
+/* Инициализация компонентов приложения (меню) */
 static void runo_app_startup(GApplication *app) {
     // const char *quit_accels[2] = { "<Ctrl>Q", NULL };
 
@@ -47,6 +46,7 @@ static void runo_app_startup(GApplication *app) {
     // gtk_application_set_accels_for_action(GTK_APPLICATION(app), "app.quit", quit_accels);
 }
 
+/* Инициализация класса приложения (метод вызывается внутри gtk) */
 static void runo_app_class_init(RunoAppClass *class) {
     
     G_APPLICATION_CLASS(class)->activate = runo_app_activate;
@@ -54,17 +54,7 @@ static void runo_app_class_init(RunoAppClass *class) {
     // G_APPLICATION_CLASS(class)->open = runo_app_open;
 }
 
+/* Создание объекта приложения */
 RunoApp *runo_app_new(void) {
     return g_object_new(RUNO_APP_TYPE, "application-id", "ru.axel.tl", "flags", G_APPLICATION_HANDLES_OPEN, NULL);
 }
-
-// /* Запуск приложения */
-// int launch_app(int argc, char **argv) {
-//     GtkApplication *app = gtk_application_new("ru.axel.tl", G_APPLICATION_DEFAULT_FLAGS);
-//     g_signal_connect(app, "activate", G_CALLBACK(activate_mainwnd), NULL);
-//     int status = g_application_run(G_APPLICATION(app), 1, argv); // Передаем только 1 аргумент (название приложение, что-бы не вылетала ошибка "Неизвестный параметр")
-//     g_object_unref(app);
-
-//     return status;
-// }
-
