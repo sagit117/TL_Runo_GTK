@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/ru/axel/tl/" id="ru.axel.tl">
+    <key name="db-port" type="i">
+      <default>5432</default>
+      <summary>DB Port</summary>
+      <description>Номер порта для подключения базы данных.</description>
+    </key>
+  </schema>
+</schemalist>

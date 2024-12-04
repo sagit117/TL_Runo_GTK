@@ -1,3 +1,5 @@
 *.o
 /bin
 resources.c
+ru.axel.tl.gschema.valid
+gschemas.compiled
